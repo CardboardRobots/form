@@ -22,11 +22,12 @@ export function FormInput<T extends FieldValues = FieldValues>({
   control,
   name,
   maxLength,
-  inputProps,
   required,
   helperText,
   suggestions,
   unit,
+  slotProps,
+  variant = "filled",
   ...props
 }: FormInputProps<T>) {
   return (
@@ -40,21 +41,25 @@ export function FormInput<T extends FieldValues = FieldValues>({
       }) => (
         <>
           <TextField
-            variant="filled"
-            fullWidth
+            variant={variant}
             required={required}
-            inputProps={{ maxLength, ...inputProps }}
-            helperText={error?.message ?? helperText}
-            error={Boolean(error)}
-            InputProps={
-              unit
+            slotProps={{
+              ...slotProps,
+              htmlInput: {
+                maxLength,
+                ...slotProps?.htmlInput,
+              },
+              input: unit
                 ? {
                     startAdornment: (
                       <InputAdornment position="start">{unit}</InputAdornment>
                     ),
+                    ...slotProps?.input,
                   }
-                : undefined
-            }
+                : undefined,
+            }}
+            helperText={error?.message ?? helperText}
+            error={Boolean(error)}
             {...props}
             value={value ?? ""}
             onChange={onChange}

@@ -33,6 +33,7 @@ type FormSelectProps<T extends FieldValues, TOption> = SelectProps & {
 };
 
 export function FormSelect<T extends FieldValues, TOption>({
+  variant = "filled",
   labelId,
   control,
   name,
@@ -52,7 +53,7 @@ export function FormSelect<T extends FieldValues, TOption>({
   ...props
 }: FormSelectProps<T, TOption>) {
   return (
-    <SelectFormControl variant="filled" fullWidth>
+    <SelectFormControl variant={variant} fullWidth>
       <InputLabel id={labelId} required={required}>
         {label}
       </InputLabel>
