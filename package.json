@@ -1,6 +1,6 @@
 {
   "name": "@cardboardrobots/form",
-  "version": "0.0.0-rc0",
+  "version": "0.0.0-rc1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,6 +9,7 @@
     "test": "jest",
     "prepublishOnly": "npm run clean && npm run build"
   },
+  "type": "module",
   "author": "",
   "license": "MIT",
   "description": "",
